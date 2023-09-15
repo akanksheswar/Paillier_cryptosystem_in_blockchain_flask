@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(147, 71, 71);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, p {
+            color: rgb(255, 255, 255);
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        form {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: rgb(255, 255, 255);
+            color: rgb(147, 71, 71);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(147, 71, 71);
+            color: rgb(255, 255, 255);
+        }
+
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 300px;
+        }
+
+        .messages li {
+            color: rgb(255, 255, 255);
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Voting System</h1>
+    <p>Manage your employees vote in the most perfect way</p>
+    <br>
+    <br>
+    <h2>
+        <form method="POST" action="" enctype="multipart/form-data">
+            <div class="form-group">
+                {{ form.file.label }}
+                <br>
+                <br>
+                {{ form.file() }}
+                <br>
+                <br>
+            </div>
+            <p><input type="submit" value="Submit"></p>
+        </form>
+        
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </h2>
+</body>
+</html>

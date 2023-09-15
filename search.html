@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Voting System</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: rgb(147, 71, 71);
+                margin: 0;
+                padding: 0;
+            }
+
+            h1, h2, p {
+                color: rgb(255, 255, 255);
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            form {
+                text-align: center;
+                margin: 20px auto;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+                color: rgb(255, 255, 255);
+            }
+
+            input[type="text"], input[type="number"] {
+                padding: 10px;
+                border: 1px solid rgb(255, 255, 255);
+                border-radius: 5px;
+                width: 80%;
+                margin-bottom: 15px;
+            }
+
+            button[type="submit"] {
+                padding: 10px 20px;
+                background-color: rgb(255, 255, 255);
+                color: rgb(147, 71, 71);
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            button[type="submit"]:hover {
+                background-color: rgb(147, 71, 71);
+                color: rgb(255, 255, 255);
+            }
+
+            table {
+                width: 80%;
+                margin: 0 auto;
+                border-collapse: collapse;
+                border: 1px solid rgb(255, 255, 255);
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid rgb(255, 255, 255);
+                color: rgb(255, 255, 255);
+            }
+
+            th {
+                background-color: rgb(147, 71, 71);
+            }
+
+            tr:nth-child(even) {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .result-button {
+                text-align: center;
+                margin: 20px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Employee Voting System</h1>
+        <p>Manage your employees in the most prefect way</p>
+        <br>
+        <br>
+        <h2>search for Employee details</h2>
+        <form action="search" method="POST">
+            <label for="searchTerm">Search by name or ID:</label>
+            <input type="text" id="search_input" name="search_input" required>
+            <button type="submit">Search</button>
+        </form>
+        <h2>Results</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Voting percentage</th>
+            </tr>
+            {% for result in search_results %}
+                <tr>
+                    <td>{{ result[0] }}</td>
+                    <td>{{ result[1] }}</td>
+                    <td>{{ result[2] }}</td>
+                    <td><form action="vote" method="POST">
+                        <input type="hidden" name="id" value="{{ result[0] }}">
+                        <input type="number" name="voting_percentage" min="0" max="100">
+                        <button type="submit">vote</button>
+                    </form></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form action="/calculate?threshold={{ threshold }}" method="POST">
+        <form action="/calculate" method="POST">
+                <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+    </body>
+</html>

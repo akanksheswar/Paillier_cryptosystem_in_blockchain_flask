@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        body, h1, h2, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set a background color and font family */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #933d3d; /* Use your preferred background color */
+        }
+
+        /* Center-align text and add spacing */
+        h1, h2, p {
+            text-align: center;
+            margin: 20px 0;
+            color: #fff; /* White text color */
+        }
+
+        /* Style the form */
+        form {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Style the file input */
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #fff; /* White border */
+            border-radius: 5px;
+            width: 80%; /* Adjust the width as needed */
+            margin-bottom: 15px;
+            background-color: transparent; /* Transparent background */
+            color: #fff; /* White text color */
+        }
+
+        /* Style the submit button */
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #fff; /* White background */
+            color: #933d3d; /* Your preferred text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #933d3d; /* Hover background color */
+            color: #fff; /* Hover text color */
+        }
+
+        /* Style flash messages */
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 300px;
+        }
+
+        .messages li {
+            color: #fff; /* White text color */
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Result Page</h1>
+    <p>{{ result_message }}</p>
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>
